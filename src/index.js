@@ -1,15 +1,18 @@
-const express = require('express')
-require('./src/db/mongoose')
-//models
-const User = require('./src/models/user')
-const UserRouter = require('./src/routers/user')
+const express = require("express");
+const connectToDb = require("./db/mongoose");
 
-const app = express()
-const port = process.env.PORT || 3000
+require("dotenv").config();
 
-app.use(express.json())
-app.use(UserRouter)
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-app.listen(port,()=>{
-    console.log('server is up and listening on port, '+ port)
-})
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use("/uploads", express.static("uploads"));
+app.use("/api/v1", require("./api/v1/routes/index"));
+
+app.listen(PORT, async () => {
+  await connectToDb();
+  console.log("Listening on PORT: " + PORT);
+});
