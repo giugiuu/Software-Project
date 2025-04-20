@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const EventStatus = ["pending", "approved", "declined"];
+
 const EventSchema = new mongoose.Schema(
   {
     image: { type: String, required: true },
@@ -12,10 +14,15 @@ const EventSchema = new mongoose.Schema(
     date: { type: Date, required: true },
     location: { type: String, required: true },
     category: { type: String, required: true },
+    status: {
+      type: String,
+      enum: EventStatus,
+      default: EventStatus[0],
+    },
   },
   { timestamps: true }
 );
 
 const Event = mongoose.model("Event", EventSchema);
 
-module.exports = Event;
+module.exports = { Event, EventStatus };

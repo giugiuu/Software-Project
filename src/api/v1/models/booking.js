@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const BookingStatus = ["pending", "confirmed", "canceled"];
+
 const BookingSchema = new mongoose.Schema(
   {
     user: {
@@ -25,8 +27,8 @@ const BookingSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["pending", "confirmed", "canceled"],
-      default: "pending",
+      enum: BookingStatus,
+      default: BookingStatus[0],
     },
   },
   {
@@ -36,4 +38,4 @@ const BookingSchema = new mongoose.Schema(
 
 const Booking = mongoose.model("Booking", BookingSchema);
 
-module.exports = Booking;
+module.exports = { Booking, BookingStatus };
