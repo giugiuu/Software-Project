@@ -23,6 +23,12 @@ router.post(
 );
 
 router.get("/", eventController.getEvents);
+router.get(
+  "/all",
+  authenticate,
+  authorize(["System Admin"]),
+  eventController.getEventsAdmin
+);
 router.get("/:id", sanitizeParams(IdParamsSchema), eventController.getEvent);
 
 router.put(

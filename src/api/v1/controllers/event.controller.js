@@ -87,6 +87,15 @@ const getEvents = async (req, res) => {
   }
 };
 
+const getEventsAdmin = async (req, res) => {
+  try {
+    const events = await Event.find();
+    res.json(events);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching events" });
+  }
+};
+
 const getEvent = async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);
@@ -109,5 +118,6 @@ module.exports = {
   updateEvent,
   deleteEvent,
   getEvents,
+  getEventsAdmin,
   getEvent,
 };
