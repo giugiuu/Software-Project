@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 node_modules
 .pnp
@@ -37,3 +38,8 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw? 
+=======
+node_modules
+package-lock.json
+.env
+>>>>>>> e1e011f12b2d24bf9fb059b7c57397dd6cc71bef
