@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../softtt/project/.bolt"
+		},
+		{
+			"path": "../../../softtt/project/src/components"
+		},
+		{
+			"path": "../../../softtt/project/src/contexts"
+		},
+		{
+			"path": "../../../softtt/project/src/data"
+		}
+	],
+	"settings": {}
+}
